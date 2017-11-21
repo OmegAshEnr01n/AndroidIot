@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:text="temp1"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/SepalLength" />
+
+    <EditText
+        android:id="@+id/SepalWidth"
+        android:text="temp2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:text="temp3"
+        android:id="@+id/PetalLength"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/PetalWidth"
+        android:text="temp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Classify"
+        android:id="@+id/classify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="classify"/>
+
+    <Button
+        android:text="Train"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/train"
+        android:onClick="train"/>
+
+
+</LinearLayout>
