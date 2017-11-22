@@ -210,32 +210,65 @@ public class MainActivity extends Activity {
 
         private boolean running = true;
 
-        public void pause(){
+        public AdkReadTask() {
+            try {
+                String csvfile = "TEMP";
+                FileWriter fileWriter = new FileWriter(csvfile);
+
+                CSVcreator writer = new CSVcreator(fileWriter);
+
+                writer.writer(Arrays.asList("Pulse","Oxygen", "Position"));
+
+
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+        }
+
+        public void pause() {
             running = false;
         }
 
         protected Void doInBackground(Void... params) {
 //	    	Log.i("ADK demo bi", "start adkreadtask");
-            while(running) {
-                publishProgress(mAdkManager.readSerial()) ;
+            while (running) {
+                publishProgress(mAdkManager.readSerial());
             }
             return null;
         }
 
         protected void onProgressUpdate(String... progress) {
 
-            float pulseRate= (int)progress[0].charAt(0);
-            float oxygenLvl= (int)progress[0].charAt(1);
-            float pos= (int)progress[0].charAt(2);
+            float pulseRate = (int) progress[0].charAt(0);
+            float oxygenLvl = (int) progress[0].charAt(1);
+            float pos = (int) progress[0].charAt(2);
             int max = 255;
-            if (pulseRate>max) pulseRate=max;
-            if (oxygenLvl>max) oxygenLvl=max;
-            if (pos>max) pos=max;
+            if (pulseRate > max) pulseRate = max;
+            if (oxygenLvl > max) oxygenLvl = max;
+            if (pos > max) pos = max;
 
 //            DecimalFormat df = new DecimalFormat("#.#");
-            distance.setText(pulseRate + " (bpm)");
-            pulse.setText(oxygenLvl + " (pct)");
-            position.setText(pos + "");
+//            distance.setText(pulseRate + " (bpm)");
+//            pulse.setText(oxygenLvl + " (pct)");
+//            position.setText(pos + "");
+            try {
+                String csvfile = "TEMP";
+                FileWriter fileWriter = new FileWriter(csvfile);
+
+                CSVcreator writer = new CSVcreator(fileWriter);
+
+                writer.writer(Arrays.asList(Character.toString(progress[0].charAt(0)),Character.toString(progress[0].charAt(1)), Character.toString(progress[0].charAt(2))));
+
+
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
         }
     }
 
